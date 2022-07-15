@@ -28,6 +28,8 @@ document.querySelector('#btnThemNV').onclick = function () {
     // ----------- kiểm tra định dạng ----------- 
     valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau,'#error_checkPass1','Mật Khẩu')
 
+    valid &= kiemTraTaiKhoang('#tknv','#error_checkTKNV','Tài Khoảng');
+
     if (!valid) {
         return;
     }
@@ -149,6 +151,8 @@ document.querySelector('#btnCapNhat').onclick = function () {
 
     // ----------- kiểm tra định dạng ----------- 
     valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau,'#error_checkPass1','Mật Khẩu');
+    // ------- kiểm tra tài khoảng --------
+    valid &= kiemTraTaiKhoang('#tknv', '#error_checkTKNV','Tài Khoảng');
 
     if (!valid) {
         return;
