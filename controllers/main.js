@@ -214,12 +214,11 @@ function hienThiNhanVien(arrNhanVien, valOfSearch) {
     var newNhanVien = [];
     var newArr = arrNhanVien;
     var valOfSearch = document.querySelector('#searchName').value;
-    var indexSearch = newArr.findIndex(nv => nv.xepLoaiNhanVien() === valOfSearch);
     for (var index = 0; index < newArr.length; index++) {
-        var indexSearch = newArr.findIndex(nv => nv.xepLoaiNhanVien() === valOfSearch);
-        if (indexSearch !== -1) {
-            newNhanVien.push(newArr[indexSearch]);
-            newArr.splice(indexSearch, 1);
+        var object = arrNhanVien[index];
+        var xepLoai = object.xepLoaiNhanVien();
+        if(xepLoai === valOfSearch) {
+            newNhanVien.push(newArr[index])
         }
     }
     renderTableNhanVien(newNhanVien);
