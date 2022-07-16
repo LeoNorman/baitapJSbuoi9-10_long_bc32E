@@ -124,8 +124,13 @@
 						<div class="row mb-3">
 							<div class="col">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Loại nhân viên" id="searchName"
-										onchange="searchName(this.value)">
+									<select id="searchName" onchange="searchName(this.value)" class="form-control">
+										<option>tất cả</option>
+										<option>xuất sắc</option>
+										<option>giỏi</option>
+										<option>khá</option>
+										<option>trung bình</option>
+									</select>
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="btnTimNV"><i class="fa fa-search"></i></span>
 									</div>

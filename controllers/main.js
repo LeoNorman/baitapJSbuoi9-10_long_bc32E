@@ -26,9 +26,9 @@ document.querySelector('#btnThemNV').onclick = function () {
     valid &= kiemTraChucVu('#chucvu', '#error_checkCV', 'Chức Vụ');
 
     // ----------- kiểm tra định dạng ----------- 
-    valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau,'#error_checkPass1','Mật Khẩu')
+    valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau, '#error_checkPass1', 'Mật Khẩu')
 
-    valid &= kiemTraTaiKhoang('#tknv','#error_checkTKNV','Tài Khoảng');
+    valid &= kiemTraTaiKhoang('#tknv', '#error_checkTKNV', 'Tài Khoảng');
 
     if (!valid) {
         return;
@@ -150,9 +150,9 @@ document.querySelector('#btnCapNhat').onclick = function () {
     valid &= kiemTraChucVu('#chucvu', '#error_checkCV', 'Chức Vụ');
 
     // ----------- kiểm tra định dạng ----------- 
-    valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau,'#error_checkPass1','Mật Khẩu');
+    valid &= kiemTraTatCaKyTu(nv.hoTen, '#error_checkName', 'Họ Tên') & kiemTraEmail(nv.email, '#error_checkEmail', 'Email') & kiemTraMatKhau(nv.matKhau, '#error_checkPass1', 'Mật Khẩu');
     // ------- kiểm tra tài khoảng --------
-    valid &= kiemTraTaiKhoang('#tknv', '#error_checkTKNV','Tài Khoảng');
+    valid &= kiemTraTaiKhoang('#tknv', '#error_checkTKNV', 'Tài Khoảng');
 
     if (!valid) {
         return;
@@ -200,7 +200,7 @@ function layLocalStorage() {
 window.onload = function () {
     //Browser vừa load lên làm gì thì sẽ code ở đây
     layLocalStorage();
-    renderTableNhanVien(mangNhanVien);
+    // renderTableNhanVien(mangNhanVien);
     // alert('in ra dữ liệu cũ');
 }
 
@@ -211,8 +211,17 @@ document.querySelector('#btnThem').onclick = function () {
 
 function searchName(val) {
     var newvalue = val;
-    hienThiNhanVien(mangNhanVien, newvalue);
-    // alert('giá trị đã thay đổi!');
+    if (newvalue === 'xuất sắc') {
+        hienThiNhanVien(mangNhanVien, newvalue);
+    } else if (newvalue === 'giỏi') {
+        hienThiNhanVien(mangNhanVien, newvalue);
+    } else if (newvalue === 'khá') {
+        hienThiNhanVien(mangNhanVien, newvalue);
+    } else if (newvalue === 'trung bình') {
+        hienThiNhanVien(mangNhanVien, newvalue);
+    } else {
+        renderTableNhanVien(mangNhanVien);
+    }
 }
 function hienThiNhanVien(arrNhanVien, valOfSearch) {
     var newNhanVien = [];
@@ -221,7 +230,7 @@ function hienThiNhanVien(arrNhanVien, valOfSearch) {
     for (var index = 0; index < newArr.length; index++) {
         var object = arrNhanVien[index];
         var xepLoai = object.xepLoaiNhanVien();
-        if(xepLoai === valOfSearch) {
+        if (xepLoai === valOfSearch) {
             newNhanVien.push(newArr[index])
         }
     }
